@@ -62,6 +62,19 @@ namespace LRSkipAsync
             }
         }
 
+        public async Task ExecAsync(char[] __trim)
+        {   // 両側余白情報を削除（指定区切り）
+            if (!_empty)
+            {   // バッファーに実装有り
+                _wbuf = _wbuf.TrimEnd(__trim);          // 両側余白情報を削除
+
+                if (_wbuf.Length == 0 || _wbuf == null)
+                {   // バッファー情報無し
+                    await ClearAsync();           // 作業領域の初期化
+                }
+            }
+        }
+
         public async Task ExecAsync(String msg)
         {   // 右側余白情報を削除
             await SetbufAsync(msg);                 // 入力内容の作業領域設定
@@ -77,6 +90,21 @@ namespace LRSkipAsync
             }
         }
 
+
+        public async Task ExecAsync(String msg, char[] __trim)
+        {   // 両側余白情報を削除（指定区切り）
+            await SetbufAsync(msg);                 // 入力内容の作業領域設定
+
+            if (!_empty)
+            {   // バッファーに実装有り
+                _wbuf = _wbuf.TrimEnd(__trim);          // 両側余白情報を削除
+
+                if (_wbuf.Length == 0 || _wbuf == null)
+                {   // バッファー情報無し
+                    await ClearAsync();           // 作業領域の初期化
+                }
+            }
+        }
         private async Task SetbufAsync(String _strbuf)
         {   // [_wbuf]情報設定
             _wbuf = _strbuf;
