@@ -27,6 +27,7 @@ namespace MyWindows
         #region 初期設定
         private CS_LskipAsync lskip;
         private CS_RskipAsync rskip;
+        private CS_LRskipAsync lrskip;
         #endregion
 
         public MainPage()
@@ -35,6 +36,7 @@ namespace MyWindows
 
             lskip = new CS_LskipAsync();
             rskip = new CS_RskipAsync();
+            lrskip = new CS_LRskipAsync();
 
             TextBox01.Text = "";
 
@@ -77,6 +79,19 @@ namespace MyWindows
             ClearResultTextBox();			// 初期表示をクリアする
 
             TextBox01.Text = "";
+        }
+        #endregion
+
+        #region ［ＬＲＳｋｉｐ］ボタン押下
+        private async void button4_Click(object sender, RoutedEventArgs e)
+        {   // [LRSkip]ボタン押下
+            // WriteLineResult(@"[LRSkip]");
+            String KeyWord = TextBox01.Text;
+
+            lrskip.Wbuf = KeyWord;
+            await lrskip.ExecAsync();
+
+            WriteLineResult("\nResult : [{0}]", lrskip.Wbuf);
         }
         #endregion
     }

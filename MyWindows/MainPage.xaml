@@ -18,5 +18,7 @@
 			Click="button2_Click" />
         <Button x:Name="button3" Content="Reset" HorizontalAlignment="Right" Margin="0,0,50,50" VerticalAlignment="Bottom" Width="200" Height="50"
 			Click="button3_Click" />
+        <Button x:Name="button4" Content="LRSkip" HorizontalAlignment="Right" Margin="0,0,800,50" VerticalAlignment="Bottom" Height="50" Width="200"
+        	Click="button4_Click" />
     </Grid>
 </Page>

@@ -9,8 +9,8 @@ namespace LRSkipAsync
     public class CS_LskipAsync
     {
         #region 共有領域
-        private String _wbuf;
-        private Boolean _empty;
+        private static String _wbuf;
+        private static Boolean _empty;
         public String Wbuf
         {
             get
@@ -30,7 +30,7 @@ namespace LRSkipAsync
                 }
             }
         }
-        private char[] _trim = { ' ', '\t', '\r', '\n' };
+        private static readonly char[] _trim = { ' ', '\t', '\r', '\n' };
         #endregion
 
         #region コンストラクタ
